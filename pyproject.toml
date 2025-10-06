@@ -1,0 +1,20 @@
+[project]
+name = "roadmap-project"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Felipe Monteiro",email = "felipemmateuss@gmail.com"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.11, <3.14"
+dependencies = [
+    "pysus (>=1.0.0,<2.0.0)",
+    "pandas (>=2.3.3,<3.0.0)",
+    "pyqt5 (>=5.15.11,<6.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
