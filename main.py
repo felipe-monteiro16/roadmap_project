@@ -1,6 +1,6 @@
 print("Hello World")
 
-i = input("Type a number: ")
-j = input("Type another number: ")
+i = int(input("Type a number: "))
+j = int(input("Type another number: "))
 
 print(f"{i + j}")
