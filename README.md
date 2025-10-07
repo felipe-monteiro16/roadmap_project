@@ -1,39 +1,40 @@
-# 📘 Nome do Projeto
+# 📘 PySUS Dashboard
 
-## 📝 Descrição
-O objetivo desse projeto é apresentar dados do pySUS de forma simples para o usuário
+## 📝 Description
+The goal of this project is to download and display PySUS data in a simple way for the user. 
 
-## ⚙️ Tecnologias e Ferramentas Utilizadas
+## ⚙️ TTechnologies and tools used
 - Python
-- Requests
-- API Gemini
+- PySUS
 - PyQt5
 
-## 💻 Como Rodar o Projeto
+## 💻 How to run
 
-Instruções passo a passo para executar o projeto localmente:
+Step-by-step instructions to run the project locally
 
 ```bash
-# Clone o repositório
-git clone https://github.com/usuario/projeto.git
+# Clone the repository
+git clone https://github.com/felipe-monteiro16/roadmap_project.git
 
-# Acesse a pasta
-cd projeto
+# Access the directory
+cd roadmap_project
 
-# Instale dependências (se necessário)
-pip install -r requirements.txt
+# Install dependencies
+pip install poetry
 
-# Execute o projeto
-python main.py
+poetry install --no-root
+
+# Run the project
+poetry run python main.py
 ```
 
-## 👥 Colaboradores
+## 👥 Collaborators
 
-| Nome   | GitHub                                   |
+| Name   | GitHub                                   |
 | ------ | ---------------------------------------- |
 | Ricardo | [@ricard0mat0s](https://github.com/ricard0mat0s) |
-| Felipe | [@usuario2](https://github.com/usuario2) |
+| Felipe | [@usuario2](https://github.com/felipe-monteiro16) |
 
-## 📄 Licença
+## 📄 License
 
-Este projeto está licenciado sob a [MIT License](LICENSE).
+This project is licensed by the [MIT License](LICENSE).
