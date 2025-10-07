@@ -1,2 +1,5 @@
+"""Display Layer"""
+
 def show_all_data(data):
-	print(data)
+    """Show all data"""
+    print(data)

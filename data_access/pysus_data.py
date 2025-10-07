@@ -1,2 +1,5 @@
+"""Layer to get data by PySUS"""
+
 def get_all_data():
-	return "Testing..."
+    """get all data"""
+    return "Testing..."
