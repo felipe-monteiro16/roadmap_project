@@ -1,1 +1,39 @@
-poetry install --no-root
+# 📘 Nome do Projeto
+
+## 📝 Descrição
+O objetivo desse projeto é apresentar dados do pySUS de forma simples para o usuário
+
+## ⚙️ Tecnologias e Ferramentas Utilizadas
+- Python
+- Requests
+- API Gemini
+- PyQt5
+
+## 💻 Como Rodar o Projeto
+
+Instruções passo a passo para executar o projeto localmente:
+
+```bash
+# Clone o repositório
+git clone https://github.com/usuario/projeto.git
+
+# Acesse a pasta
+cd projeto
+
+# Instale dependências (se necessário)
+pip install -r requirements.txt
+
+# Execute o projeto
+python main.py
+```
+
+## 👥 Colaboradores
+
+| Nome   | GitHub                                   |
+| ------ | ---------------------------------------- |
+| Ricardo | [@ricard0mat0s](https://github.com/ricard0mat0s) |
+| Felipe | [@usuario2](https://github.com/usuario2) |
+
+## 📄 Licença
+
+Este projeto está licenciado sob a [MIT License](LICENSE).
