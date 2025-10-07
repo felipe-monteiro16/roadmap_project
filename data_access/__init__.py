@@ -1,13 +1,18 @@
 """Data access layer"""
-from .pysus_data import get_all_data
+from .pysus_data import get_all_data, get_fields_summary
 
 
 class DataAccess:
     """Data access class"""
     def __init__(self):
-        self.number = 1
+        pass
 
 
-    def get_all_data(self):
+    def get_fields_summary(self):
+        """Get fields summary"""
+        return get_fields_summary()
+
+
+    def get_all_data(self, dev_mode=False):
         """Get all data"""
-        return get_all_data() + str(self.number)
+        return get_all_data(dev_mode=dev_mode)
