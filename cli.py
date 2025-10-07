@@ -19,6 +19,7 @@ class MainWindow(QMainWindow, Ui_Graph):
             layout.addWidget(self.graphWidget)
             self.GraphWidget.setLayout(layout)
 
+            # Receive X and Y from PySUS
             self.graphWidget.plot([1, 2, 3, 4], [5, 6, 7, 8], pen='b', symbol='o', symbolSize=5, symbolBrush=('r'))
             
             self.graphWidget.setTitle("Random Data Plot")
