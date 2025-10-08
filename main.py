@@ -13,9 +13,8 @@ class MainWindow(QMainWindow, Ui_Graph):
         self.setupUi(self)
         self.setWindowTitle("Graphs")
 
-        self.DiseaseComboBox.addItem("Dengue", ["Gênero", "Raça"])
-        self.DiseaseComboBox.addItem("AIDS", ["Gênero", "Raça"])
-
+        self.DiseaseComboBox.addItem("Dengue", ["Gender", "Age"])
+        
         self.DiseaseComboBox.activated.connect(self.show_demographic)
         self.DiseaseComboBox.setCurrentIndex(-1)
 
@@ -40,31 +39,47 @@ class MainWindow(QMainWindow, Ui_Graph):
 
     def plot_data(self):
         """Plot data based on user selection"""
+
         self.graphWidget.clear()
 
+        data = get_download_data()
+        print(data)
+
+        demographic = self.DemographicsComboBox.currentText()
+
+        if demographic == "Gender":
+            Y = data["CS_SEXO"].value_counts().sort_index()
+        elif demographic == "Age":
+            Y = data["NU_IDADE"].value_counts().sort_index()
+        
+        index = list(Y.index)
+
+        if type(index[0]) == str:
+            X = list(range(len(index)))
+        else:
+            X = index
+
         if self.LineRadioButton.isChecked():
+            
+            self.graphWidget.plot(X, Y, pen='b', symbol='o', symbolSize=5, symbolBrush=('r'))
 
-            # Receive X and Y from PySUS
-            self.graphWidget.plot([1, 2, 3, 4], [5, 6, 7, 8], pen='b', symbol='o', symbolSize=5, symbolBrush=('r'))
-
-            self.graphWidget.setTitle("Random Data Plot")
             self.graphWidget.showGrid(x=True, y=True)
-            self.graphWidget.getAxis("bottom").setTicks(None)
 
         elif self.BarRadioButton.isChecked():
 
-            # Receive categories and heights from PySUS
-            categories = ['A', 'B', 'C', 'D', 'E']
-            heights = [10, 25, 15, 30, 20]
-            x_positions = list(range(len(categories)))
-
-            bar_graph = pg.BarGraphItem(x=x_positions, height=heights, width=0.6, brush='b')
+            bar_graph = pg.BarGraphItem(x=X, height=Y, width=0.6, brush='b')
             self.graphWidget.addItem(bar_graph)
-            self.graphWidget.showGrid(x=False, y=False)
 
+            self.graphWidget.showGrid(x=False, y=False)
+        
+        if type(index[0]) == str:
             axis = self.graphWidget.getAxis("bottom")
-            ticks = [list(zip(x_positions, categories))]
+            ticks = [list(zip(X, index))]
             axis.setTicks(ticks)
+        else:
+            self.graphWidget.getAxis("bottom").setTicks(None)
+
+        self.graphWidget.setTitle(f"Number of cases X {demographic}")
 
 
 def get_download_data():
