@@ -14,16 +14,16 @@ class MainWindow(QMainWindow, Ui_Graph):
         self.setWindowTitle("Graphs")
 
         self.DiseaseComboBox.addItem("Dengue", ["Gender", "Age"])
-        
+
         self.DiseaseComboBox.activated.connect(self.show_demographic)
         self.DiseaseComboBox.setCurrentIndex(-1)
 
-        self.graphWidget = pg.PlotWidget()
+        self.graph_widget = pg.PlotWidget()
 
-        self.graphWidget.setBackground('w')
+        self.graph_widget.setBackground('w')
 
         layout = QVBoxLayout(self.GraphWidget)
-        layout.addWidget(self.graphWidget)
+        layout.addWidget(self.graph_widget)
         self.GraphWidget.setLayout(layout)
 
         # Turn the graph dinammic
@@ -40,45 +40,47 @@ class MainWindow(QMainWindow, Ui_Graph):
     def plot_data(self):
         """Plot data based on user selection"""
 
-        self.graphWidget.clear()
+        self.graph_widget.clear()
 
         data = get_download_data()
 
         demographic = self.DemographicsComboBox.currentText()
 
         if demographic == "Gender":
-            Y = data["CS_SEXO"].value_counts().sort_index()
+            y = data["CS_SEXO"].value_counts().sort_index()
         elif demographic == "Age":
-            Y = data["NU_IDADE"].value_counts().sort_index()
-        
-        index = list(Y.index)
-
-        if type(index[0]) == str:
-            X = list(range(len(index)))
+            y = data["NU_IDADE"].value_counts().sort_index()
         else:
-            X = index
+            return
+
+        index = list(y.index)
+
+        if isinstance(index[0], str):
+            x = list(range(len(index)))
+        else:
+            x = index
 
         if self.LineRadioButton.isChecked():
-            
-            self.graphWidget.plot(X, Y, pen='b', symbol='o', symbolSize=5, symbolBrush=('r'))
 
-            self.graphWidget.showGrid(x=True, y=True)
+            self.graph_widget.plot(x, y, pen='b', symbol='o', symbolSize=5, symbolBrush='r')
+
+            self.graph_widget.showGrid(x=True, y=True)
 
         elif self.BarRadioButton.isChecked():
 
-            bar_graph = pg.BarGraphItem(x=X, height=Y, width=0.6, brush='b')
-            self.graphWidget.addItem(bar_graph)
+            bar_graph = pg.BarGraphItem(x=x, height=y, width=0.6, brush='b')
+            self.graph_widget.addItem(bar_graph)
 
-            self.graphWidget.showGrid(x=False, y=False)
-        
-        if type(index[0]) == str:
-            axis = self.graphWidget.getAxis("bottom")
-            ticks = [list(zip(X, index))]
+            self.graph_widget.showGrid(x=False, y=False)
+
+        if isinstance(index[0], str):
+            axis = self.graph_widget.getAxis("bottom")
+            ticks = [list(zip(x, index))]
             axis.setTicks(ticks)
         else:
-            self.graphWidget.getAxis("bottom").setTicks(None)
+            self.graph_widget.getAxis("bottom").setTicks(None)
 
-        self.graphWidget.setTitle(f"Number of cases X {demographic}")
+        self.graph_widget.setTitle(f"Number of cases X {demographic}")
 
 
 def get_download_data():
