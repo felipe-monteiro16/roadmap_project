@@ -27,7 +27,8 @@ class MainWindow(QMainWindow, Ui_Graph):
         layout.addWidget(self.graphWidget)
         self.GraphWidget.setLayout(layout)
 
-        self.graphWidget.getViewBox().setMouseEnabled(x=False, y=False)
+        # Turn the graph dinammic
+        #self.graphWidget.getViewBox().setMouseEnabled(x=False, y=False)
 
         self.GeneratePushButton.clicked.connect(self.plot_data)
 
