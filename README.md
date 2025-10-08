@@ -26,6 +26,10 @@ poetry install --no-root
 
 # Run the project
 poetry run python main.py
+
+
+# (temp) Get fields dicionary
+poetry run python main.py -d
 ```
 
 ## 👥 Collaborators
