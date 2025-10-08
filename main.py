@@ -43,7 +43,6 @@ class MainWindow(QMainWindow, Ui_Graph):
         self.graphWidget.clear()
 
         data = get_download_data()
-        print(data)
 
         demographic = self.DemographicsComboBox.currentText()
 
