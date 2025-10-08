@@ -1,5 +1,5 @@
 """Data access layer"""
-from .pysus_data import get_all_data, get_fields_summary, download_data
+from .pysus_data import get_all_data, get_fields_summary
 
 
 class DataAccess:
@@ -15,7 +15,7 @@ class DataAccess:
 
     def download_data(self):
         """Download data from SINAN"""
-        return download_data()
+        return get_all_data()
 
 
     def get_all_data(self, dev_mode=False):
