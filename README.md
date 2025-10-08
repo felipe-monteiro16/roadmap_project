@@ -27,9 +27,9 @@ poetry install --no-root
 # Run the project
 poetry run python main.py
 
-
-# (temp) Get fields dicionary
-poetry run python main.py -d
+# Just for linux users:
+sudo apt update
+sudo apt install -y libxcb-xinerama0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-xkb1 libxkbcommon-x11-0
 ```
 
 ## 👥 Collaborators
@@ -37,7 +37,7 @@ poetry run python main.py -d
 | Name   | GitHub                                   |
 | ------ | ---------------------------------------- |
 | Ricardo | [@ricard0mat0s](https://github.com/ricard0mat0s) |
-| Felipe | [@usuario2](https://github.com/felipe-monteiro16) |
+| Felipe | [@felipe-monteiro16](https://github.com/felipe-monteiro16) |
 
 ## 📄 License
 
