@@ -17,6 +17,13 @@ def parse_arguments():
     return parser.parse_args()
 
 
+def get_fields_summary():
+    """Get fields summary from SINAN metadata"""
+    data_access = DataAccess()
+    data = data_access.get_fields_summary()
+    show_all_data(data)
+
+
 def get_all_data(dev_mode=False):
     """Main function to tests"""
     data_access = DataAccess()
